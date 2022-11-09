@@ -1,0 +1,21 @@
+Description=batesste-timemachine Apple Timemachine service
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+
+# Use /opt working folder
+WorkingDirectory=/opt/batesste-timemachine
+
+# Compose down
+ExecStartPre=docker-compose -f batesste-timemachine-compose.yml down
+
+# Compose up
+ExecStart=docker-compose -f batesste-timemachine-compose.yml up --build
+
+# Compose down, remove containers and volumes
+ExecStop=docker-compose -f batesste-timemachine-compose.yml down -v
+
+[Install]
+WantedBy=multi-user.target
