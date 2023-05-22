@@ -20,8 +20,9 @@ sucessfully on Linux based systems.
    timemachine data store and ensure this is mapped/mounted to
    /mnt/timemachine-disk. Be sure to add this entry to your fstab so it
    persists across reboots.
-1. ```sudo mkdir -p /opt/batesste-timemachine/```
-1. ```sudo cp batesste-timemachine-compose.yml /opt/batesste-timemachine/```
+1. I assume this repo is in
+   /home/batesste/Projects/batesste-timemachine, it will not work if it
+   is not in this location!
 1. ```sudo cp batesste-timemachine.service /usr/lib/systemd/system/```
 1. ```sudo systemctl daemon-reload```
 1. ```sudo systemctl enable batesste-timemachine```
