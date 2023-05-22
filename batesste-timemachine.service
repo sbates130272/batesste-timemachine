@@ -7,16 +7,13 @@ After=docker.service
 Restart=always
 
 # Use /opt working folder
-WorkingDirectory=/opt/batesste-timemachine
-
-# Compose down
-ExecStartPre=docker-compose -f batesste-timemachine-compose.yml down
+WorkingDirectory=/home/batesste/Projects//batesste-timemachine
 
 # Compose up
 ExecStart=docker-compose -f batesste-timemachine-compose.yml up --build
 
-# Compose down, remove containers and volumes
-ExecStop=docker-compose -f batesste-timemachine-compose.yml down -v
+# Compose down, remove containers but not volumes
+ExecStop=docker-compose -f batesste-timemachine-compose.yml down
 
 [Install]
 WantedBy=multi-user.target
